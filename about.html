@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Spice Haven</title>
+    <meta name="description"
+        content="Learn about Spice Haven's journey, our mission to serve authentic Pakistani cuisine, and the values that drive our passion for food.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-amber-600">Spice Haven</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 hover:text-amber-600 transition">Home</a>
+                        <a href="menu.html" class="text-gray-700 hover:text-amber-600 transition">Menu</a>
+                        <a href="about.html"
+                            class="text-amber-600 font-semibold hover:text-amber-700 transition">About</a>
+                        <a href="discounted.html" class="text-gray-700 hover:text-amber-600 transition">Discounted
+                            Items</a>
+                        <a href="coupons.html" class="text-gray-700 hover:text-amber-600 transition">Earn Coupons</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-amber-600 transition">Contact</a>
+                        <a href="collab.html" class="text-gray-700 hover:text-amber-600 transition">Collaborate</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-amber-600">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Home</a>
+                <a href="menu.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Menu</a>
+                <a href="about.html" class="block px-3 py-2 text-amber-600 font-semibold">About</a>
+                <a href="discounted.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Discounted
+                    Items</a>
+                <a href="coupons.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Earn Coupons</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Contact</a>
+                <a href="collab.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Collaborate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="bg-gradient-to-r from-amber-600 to-orange-600 text-white py-20 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Our Story</h1>
+            <p class="text-xl md:text-2xl text-amber-100">A journey of flavors, tradition, and passion</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="fade-in">
+                <div class="mb-12">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1200&h=600&fit=crop"
+                        alt="Restaurant interior" class="w-full h-96 object-cover rounded-2xl shadow-xl">
+                </div>
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Spice Haven was born from a simple dream: to bring the authentic flavors of Pakistan to food
+                        lovers everywhere. Founded in 2010 by Chef Imran Ahmed, our restaurant has become a beloved
+                        destination for those seeking genuine Pakistani cuisine prepared with traditional methods and
+                        the finest ingredients.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Chef Imran grew up in Lahore, learning the art of Pakistani cooking from his grandmother, who
+                        ran a small eatery in the old city. Those childhood memories of aromatic spices, slow-cooked
+                        curries, and the warmth of sharing meals with family inspired him to create a place where these
+                        traditions could thrive.
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        Today, Spice Haven continues to honor those roots while embracing innovation. Every dish is
+                        crafted with care, using recipes passed down through generations and spices sourced directly
+                        from Pakistan. We believe that food is more than sustenance—it's a celebration of culture,
+                        family, and community.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Mission & Values</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">The principles that guide everything we do</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Authenticity</h3>
+                    <p class="text-gray-600">We stay true to traditional recipes and cooking methods, ensuring every
+                        dish reflects the genuine taste of Pakistan.</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Quality</h3>
+                    <p class="text-gray-600">Only the freshest ingredients and premium spices make it to our kitchen. We
+                        never compromise on quality.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg fade-in">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Community</h3>
+                    <p class="text-gray-600">We treat every guest like family, creating a warm and welcoming atmosphere
+                        where memories are made.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Journey</h2>
+                <p class="text-lg text-gray-600">Milestones that shaped Spice Haven</p>
+            </div>
+            <div class="space-y-12">
+                <!-- Timeline Item 1 -->
+                <div class="flex gap-8 fade-in">
+                    <div class="flex-shrink-0 w-32 text-right">
+                        <span class="text-3xl font-bold text-amber-600">2010</span>
+                    </div>
+                    <div class="flex-shrink-0 w-1 bg-amber-600 relative">
+                        <div class="absolute top-2 -left-2 w-5 h-5 bg-amber-600 rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">The Beginning</h3>
+                        <p class="text-gray-600">Chef Imran opened the first Spice Haven location with just 8 tables and
+                            a dream to share authentic Pakistani flavors.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="flex gap-8 fade-in">
+                    <div class="flex-shrink-0 w-32 text-right">
+                        <span class="text-3xl font-bold text-amber-600">2013</span>
+                    </div>
+                    <div class="flex-shrink-0 w-1 bg-amber-600 relative">
+                        <div class="absolute top-2 -left-2 w-5 h-5 bg-amber-600 rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Award Recognition</h3>
+                        <p class="text-gray-600">Received "Best Pakistani Restaurant" award from the National Culinary
+                            Association, putting us on the map.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="flex gap-8 fade-in">
+                    <div class="flex-shrink-0 w-32 text-right">
+                        <span class="text-3xl font-bold text-amber-600">2017</span>
+                    </div>
+                    <div class="flex-shrink-0 w-1 bg-amber-600 relative">
+                        <div class="absolute top-2 -left-2 w-5 h-5 bg-amber-600 rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Expansion</h3>
+                        <p class="text-gray-600">Opened our second location and expanded our menu to include regional
+                            specialties from across Pakistan.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="flex gap-8 fade-in">
+                    <div class="flex-shrink-0 w-32 text-right">
+                        <span class="text-3xl font-bold text-amber-600">2024</span>
+                    </div>
+                    <div class="flex-shrink-0 w-1 bg-amber-600 relative">
+                        <div class="absolute top-2 -left-2 w-5 h-5 bg-amber-600 rounded-full"></div>
+                    </div>
+                    <div class="flex-1 pb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Innovation & Growth</h3>
+                        <p class="text-gray-600">Launched our loyalty program and digital ordering system while
+                            maintaining our commitment to traditional cooking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-amber-500 mb-4">Spice Haven</h3>
+                    <p class="text-gray-400">Authentic Pakistani cuisine served with love and tradition since 2010.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-amber-500 transition">Home</a></li>
+                        <li><a href="menu.html" class="text-gray-400 hover:text-amber-500 transition">Menu</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-amber-500 transition">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Special Offers</h4>
+                    <ul class="space-y-2">
+                        <li><a href="discounted.html" class="text-gray-400 hover:text-amber-500 transition">Discounted
+                                Items</a></li>
+                        <li><a href="coupons.html" class="text-gray-400 hover:text-amber-500 transition">Earn
+                                Coupons</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-amber-500 transition">Contact Us</a>
+                        </li>
+                        <li><a href="collab.html" class="text-gray-400 hover:text-amber-500 transition">Collaborate</a>
+                        </li>
+                        <li class="text-gray-400">Phone: +92 300 1234567</li>
+                        <li class="text-gray-400">Email: info@spicehaven.pk</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Spice Haven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-container"></div>
+
+    <script src="chatbot.js"></script>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

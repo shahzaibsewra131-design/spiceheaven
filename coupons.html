@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earn Coupons - Spice Haven</title>
+    <meta name="description"
+        content="Join our loyalty program and earn free meals by completing our monthly challenge. Order 10 meals worth Rs 9,999+ and get rewarded!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-amber-600">Spice Haven</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 hover:text-amber-600 transition">Home</a>
+                        <a href="menu.html" class="text-gray-700 hover:text-amber-600 transition">Menu</a>
+                        <a href="about.html" class="text-gray-700 hover:text-amber-600 transition">About</a>
+                        <a href="discounted.html" class="text-gray-700 hover:text-amber-600 transition">Discounted
+                            Items</a>
+                        <a href="coupons.html" class="text-amber-600 font-semibold hover:text-amber-700 transition">Earn
+                            Coupons</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-amber-600 transition">Contact</a>
+                        <a href="collab.html" class="text-gray-700 hover:text-amber-600 transition">Collaborate</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-amber-600">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Home</a>
+                <a href="menu.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Menu</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">About</a>
+                <a href="discounted.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Discounted
+                    Items</a>
+                <a href="coupons.html" class="block px-3 py-2 text-amber-600 font-semibold">Earn Coupons</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Contact</a>
+                <a href="collab.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Collaborate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="bg-gradient-to-r from-amber-600 to-orange-600 text-white py-20 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Earn Free Meals</h1>
+            <p class="text-xl md:text-2xl text-amber-100">Join our loyalty program and get rewarded for your love of
+                great food</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Hero Image -->
+            <div class="mb-12 fade-in">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1200&h=600&fit=crop"
+                    alt="Delicious food spread" class="w-full h-96 object-cover rounded-2xl shadow-xl">
+            </div>
+
+            <!-- Main Article -->
+            <article class="bg-white rounded-2xl shadow-xl p-8 md:p-12 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-6">How to Claim Your Free Meal Coupon</h2>
+
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        At Spice Haven, we believe in rewarding our loyal customers. That's why we've created an
+                        exciting loyalty program that lets you earn free meals simply by enjoying the food you love!
+                    </p>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">The Challenge</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Complete our monthly challenge and receive a coupon for a <strong>completely free meal</strong>
+                        of your choice from our menu. Here's how it works:
+                    </p>
+
+                    <div
+                        class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-8 my-8 border-l-4 border-amber-600">
+                        <h4 class="text-2xl font-bold text-amber-900 mb-4">Challenge Requirements</h4>
+                        <ul class="space-y-4 text-gray-800">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-amber-600 mr-3 mt-1 flex-shrink-0" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span><strong>Order 10 meals</strong> within a single calendar month</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-amber-600 mr-3 mt-1 flex-shrink-0" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Your <strong>total spending must exceed Rs 9,999</strong> for those 10 meals
+                                    combined</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-amber-600 mr-3 mt-1 flex-shrink-0" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>All orders must be placed under the <strong>same registered phone
+                                        number</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">How to Get Started</h3>
+                    <ol class="space-y-4 text-lg text-gray-700 mb-6">
+                        <li class="flex items-start">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold mr-4 mt-1">1</span>
+                            <span><strong>Register your phone number</strong> with us during your first order. Simply
+                                provide your mobile number when placing an order at our restaurant or mention it when
+                                ordering online.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold mr-4 mt-1">2</span>
+                            <span><strong>Track your progress</strong> by asking our staff or using our chatbot on this
+                                website. We'll keep count of your orders and total spending automatically.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold mr-4 mt-1">3</span>
+                            <span><strong>Complete the challenge</strong> by reaching 10 meals worth more than Rs 9,999
+                                within the same month.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 bg-amber-600 text-white rounded-full flex items-center justify-center font-bold mr-4 mt-1">4</span>
+                            <span><strong>Receive your coupon</strong> via SMS at the end of the month. Your coupon will
+                                be valid for 30 days and can be redeemed for any dish on our menu!</span>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">What You Can Get</h3>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Your free meal coupon can be redeemed for <strong>any single dish</strong> from our menu,
+                        including our premium items like Mutton Karahi, Beef Nihari, or our signature Chicken Biryani.
+                        The choice is entirely yours!
+                    </p>
+
+                    <div class="bg-blue-50 rounded-xl p-6 my-8 border-l-4 border-blue-600">
+                        <h4 class="text-xl font-bold text-blue-900 mb-3">Pro Tip</h4>
+                        <p class="text-blue-800">
+                            If you're a regular customer who visits us weekly, you can easily complete this challenge!
+                            Just 2-3 visits per week with an average order of Rs 1,000-1,200 will get you there. Plus,
+                            you can combine this with our discounted items to maximize your savings!
+                        </p>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-4">Terms & Conditions</h3>
+                    <ul class="space-y-2 text-gray-700 mb-6">
+                        <li>• Challenge resets on the 1st of each month</li>
+                        <li>• Only dine-in and takeaway orders count (delivery orders excluded)</li>
+                        <li>• Coupons cannot be combined with other offers or discounts</li>
+                        <li>• Coupons are non-transferable and must be used by the registered customer</li>
+                        <li>• One coupon per customer per month</li>
+                        <li>• Management reserves the right to modify or discontinue the program at any time</li>
+                    </ul>
+
+                    <div
+                        class="bg-gradient-to-r from-amber-600 to-orange-600 rounded-xl p-8 my-8 text-center text-white">
+                        <h3 class="text-3xl font-bold mb-4">Ready to Start Earning?</h3>
+                        <p class="text-xl text-amber-100 mb-6">Visit us today and register your phone number to begin
+                            your journey to free meals!</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="menu.html"
+                                class="inline-block bg-white text-amber-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition transform hover:scale-105">View
+                                Menu</a>
+                            <a href="contact.html"
+                                class="inline-block bg-amber-800 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-amber-900 transition transform hover:scale-105">Contact
+                                Us</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- FAQ Section -->
+            <div class="mt-12 bg-white rounded-2xl shadow-xl p-8 md:p-12 fade-in">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Can I share my coupon with family or friends?
+                        </h3>
+                        <p class="text-gray-700">No, coupons are non-transferable and can only be used by the registered
+                            customer who earned them.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Do discounted items count toward the Rs 9,999
+                            total?</h3>
+                        <p class="text-gray-700">Yes! The amount you actually pay (after discounts) counts toward your
+                            total. This makes it even easier to reach the goal.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">What happens if I complete the challenge
+                            multiple times in one month?</h3>
+                        <p class="text-gray-700">You'll receive one coupon per month. However, your orders will continue
+                            to count toward the next month's challenge!</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">How do I check my progress?</h3>
+                        <p class="text-gray-700">Simply ask our staff during your visit, call us, or use our chatbot on
+                            this website to check your current order count and spending total.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-amber-500 mb-4">Spice Haven</h3>
+                    <p class="text-gray-400">Authentic Pakistani cuisine served with love and tradition since 2010.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-amber-500 transition">Home</a></li>
+                        <li><a href="menu.html" class="text-gray-400 hover:text-amber-500 transition">Menu</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-amber-500 transition">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Special Offers</h4>
+                    <ul class="space-y-2">
+                        <li><a href="discounted.html" class="text-gray-400 hover:text-amber-500 transition">Discounted
+                                Items</a></li>
+                        <li><a href="coupons.html" class="text-gray-400 hover:text-amber-500 transition">Earn
+                                Coupons</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-amber-500 transition">Contact Us</a>
+                        </li>
+                        <li><a href="collab.html" class="text-gray-400 hover:text-amber-500 transition">Collaborate</a>
+                        </li>
+                        <li class="text-gray-400">Phone: +92 300 1234567</li>
+                        <li class="text-gray-400">Email: info@spicehaven.pk</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Spice Haven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-container"></div>
+
+    <script src="chatbot.js"></script>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

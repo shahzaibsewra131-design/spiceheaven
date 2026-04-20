@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu - Spice Haven</title>
+    <meta name="description"
+        content="Browse our complete menu of authentic Pakistani dishes, from biryani to karahi, all made with traditional recipes and fresh ingredients.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold text-amber-600">Spice Haven</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 hover:text-amber-600 transition">Home</a>
+                        <a href="menu.html"
+                            class="text-amber-600 font-semibold hover:text-amber-700 transition">Menu</a>
+                        <a href="about.html" class="text-gray-700 hover:text-amber-600 transition">About</a>
+                        <a href="discounted.html" class="text-gray-700 hover:text-amber-600 transition">Discounted
+                            Items</a>
+                        <a href="coupons.html" class="text-gray-700 hover:text-amber-600 transition">Earn Coupons</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-amber-600 transition">Contact</a>
+                        <a href="collab.html" class="text-gray-700 hover:text-amber-600 transition">Collaborate</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-amber-600">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Home</a>
+                <a href="menu.html" class="block px-3 py-2 text-amber-600 font-semibold">Menu</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">About</a>
+                <a href="discounted.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Discounted
+                    Items</a>
+                <a href="coupons.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Earn Coupons</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Contact</a>
+                <a href="collab.html" class="block px-3 py-2 text-gray-700 hover:text-amber-600">Collaborate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="bg-gradient-to-r from-amber-600 to-orange-600 text-white py-20 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Our Menu</h1>
+            <p class="text-xl md:text-2xl text-amber-100">Discover the authentic flavors of Pakistan</p>
+        </div>
+    </section>
+
+    <!-- Menu Grid -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dish 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&h=400&fit=crop"
+                            alt="Chicken Biryani" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Chicken Biryani</h3>
+                        <p class="text-gray-600 mb-4">Aromatic basmati rice layered with tender chicken, saffron, and
+                            traditional spices</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rs 899</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&h=400&fit=crop"
+                            alt="Beef Nihari" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Beef Nihari</h3>
+                        <p class="text-gray-600 mb-4">Slow-cooked beef in a rich, spicy gravy - a traditional breakfast
+                            delicacy</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rs 1,299</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=400&fit=crop"
+                            alt="Mutton Karahi" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Mutton Karahi</h3>
+                        <p class="text-gray-600 mb-4">Tender mutton cooked in a wok with tomatoes, green chilies, and
+                            ginger</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rs 1,499</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 4 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=600&h=400&fit=crop"
+                            alt="Chicken Haleem" class="w-full h-64 object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            20% OFF</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Chicken Haleem</h3>
+                        <p class="text-gray-600 mb-4">Slow-cooked wheat and chicken stew with aromatic spices</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg text-gray-400 line-through mr-2">Rs 799</span>
+                                <span class="text-2xl font-bold text-amber-600">Rs 639</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 5 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=600&h=400&fit=crop"
+                            alt="Seekh Kabab" class="w-full h-64 object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            15% OFF</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Seekh Kabab Platter</h3>
+                        <p class="text-gray-600 mb-4">Grilled minced meat skewers with fresh naan and chutney</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg text-gray-400 line-through mr-2">Rs 999</span>
+                                <span class="text-2xl font-bold text-amber-600">Rs 849</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 6 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop"
+                            alt="Mutton Pulao" class="w-full h-64 object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            25% OFF</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Mutton Pulao</h3>
+                        <p class="text-gray-600 mb-4">Fragrant rice cooked with tender mutton pieces and whole spices
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg text-gray-400 line-through mr-2">Rs 1,199</span>
+                                <span class="text-2xl font-bold text-amber-600">Rs 899</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 7 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&h=400&fit=crop"
+                            alt="Chicken Tikka" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Chicken Tikka</h3>
+                        <p class="text-gray-600 mb-4">Marinated chicken pieces grilled to perfection with yogurt and
+                            spices</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rs 799</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 8 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&h=400&fit=crop"
+                            alt="Chicken Korma" class="w-full h-64 object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            18% OFF</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Chicken Korma</h3>
+                        <p class="text-gray-600 mb-4">Creamy curry with tender chicken in a rich cashew and yogurt gravy
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg text-gray-400 line-through mr-2">Rs 949</span>
+                                <span class="text-2xl font-bold text-amber-600">Rs 778</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 9 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&h=400&fit=crop"
+                            alt="Aloo Gosht" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Aloo Gosht</h3>
+                        <p class="text-gray-600 mb-4">Traditional mutton and potato curry with aromatic spices</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rs 1,099</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 10 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&h=400&fit=crop"
+                            alt="Chicken Biryani Family Pack" class="w-full h-64 object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            30% OFF</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Biryani Family Pack</h3>
+                        <p class="text-gray-600 mb-4">Large serving of chicken biryani perfect for 4-5 people with raita
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg text-gray-400 line-through mr-2">Rs 2,999</span>
+                                <span class="text-2xl font-bold text-amber-600">Rs 2,099</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 11 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=600&h=400&fit=crop"
+                            alt="Chapli Kabab Special" class="w-full h-64 object-cover">
+                        <div
+                            class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            22% OFF</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Chapli Kabab Special</h3>
+                        <p class="text-gray-600 mb-4">4 pieces of spicy Pashtun-style kababs with naan and salad</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg text-gray-400 line-through mr-2">Rs 699</span>
+                                <span class="text-2xl font-bold text-amber-600">Rs 545</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 12 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=600&h=400&fit=crop"
+                            alt="Chapli Kabab" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Chapli Kabab</h3>
+                        <p class="text-gray-600 mb-4">Spicy Pashtun-style minced meat patties with fresh herbs</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rs 699</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 13 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&h=400&fit=crop"
+                            alt="Daal Makhani" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Daal Makhani</h3>
+                        <p class="text-gray-600 mb-4">Creamy black lentils slow-cooked with butter and cream</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rs 549</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dish 14 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover-lift fade-in">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1630409346730-1dbb5c3b8e2e?w=600&h=400&fit=crop"
+                            alt="Tandoori Naan" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Tandoori Naan</h3>
+                        <p class="text-gray-600 mb-4">Fresh-baked flatbread from the clay oven, brushed with butter</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rs 89</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-amber-500 mb-4">Spice Haven</h3>
+                    <p class="text-gray-400">Authentic Pakistani cuisine served with love and tradition since 2010.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-amber-500 transition">Home</a></li>
+                        <li><a href="menu.html" class="text-gray-400 hover:text-amber-500 transition">Menu</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-amber-500 transition">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Special Offers</h4>
+                    <ul class="space-y-2">
+                        <li><a href="discounted.html" class="text-gray-400 hover:text-amber-500 transition">Discounted
+                                Items</a></li>
+                        <li><a href="coupons.html" class="text-gray-400 hover:text-amber-500 transition">Earn
+                                Coupons</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-400 hover:text-amber-500 transition">Contact Us</a>
+                        </li>
+                        <li><a href="collab.html" class="text-gray-400 hover:text-amber-500 transition">Collaborate</a>
+                        </li>
+                        <li class="text-gray-400">Phone: +92 300 1234567</li>
+                        <li class="text-gray-400">Email: info@spicehaven.pk</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Spice Haven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-container"></div>
+
+    <script src="chatbot.js"></script>
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

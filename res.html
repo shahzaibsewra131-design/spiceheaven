@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spice Haven — Admin Panel</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f0e0c;
+      --surface: #1a1815;
+      --surface2: #242220;
+      --border: #2e2b28;
+      --amber: #e8933a;
+      --amber-dim: #c47829;
+      --blue: #4a90d9;
+      --green: #4caf7d;
+      --red: #e05252;
+      --text: #f0ebe4;
+      --text-dim: #8a8278;
+      --text-muted: #5a5450;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(15,14,12,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--amber);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+
+    .btn-refresh {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--amber);
+      color: #0f0e0c;
+      border: none; cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-refresh:hover { background: var(--amber-dim); transform: scale(1.03); }
+    .btn-refresh.spinning svg { animation: spin 0.8s linear infinite; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* MAIN */
+    main { padding: 80px 32px 40px; max-width: 1400px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 32px; }
+    .page-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .page-header p { color: var(--text-dim); margin-top: 4px; font-size: 0.9rem; }
+
+    /* STATS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: var(--amber); }
+
+    .stat-label { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+    .stat-value { font-size: 2.4rem; font-weight: 700; color: var(--text); margin-top: 4px; }
+
+    .stat-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .stat-icon.blue { background: rgba(74,144,217,0.15); color: var(--blue); }
+    .stat-icon.amber { background: rgba(232,147,58,0.15); color: var(--amber); }
+    .stat-icon.green { background: rgba(76,175,125,0.15); color: var(--green); }
+
+    /* COLUMNS */
+    .columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .column {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+
+    .col-header {
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .col-header.blue { border-top: 3px solid var(--blue); }
+    .col-header.amber { border-top: 3px solid var(--amber); }
+    .col-header.green { border-top: 3px solid var(--green); }
+
+    .col-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+    .col-title.blue { color: var(--blue); }
+    .col-title.amber { color: var(--amber); }
+    .col-title.green { color: var(--green); }
+
+    .col-badge {
+      margin-left: auto;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 20px;
+    }
+    .col-badge.blue { background: rgba(74,144,217,0.15); color: var(--blue); }
+    .col-badge.amber { background: rgba(232,147,58,0.15); color: var(--amber); }
+    .col-badge.green { background: rgba(76,175,125,0.15); color: var(--green); }
+
+    .col-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: calc(100vh - 340px);
+    }
+
+    /* ORDER CARD */
+    .order-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      animation: fadeIn 0.3s ease;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .order-card:hover { border-color: #3e3b37; transform: translateY(-1px); }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .order-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+    .order-name { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+    .order-price {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--amber);
+      background: rgba(232,147,58,0.1);
+      padding: 2px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .order-dish {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      display: flex; align-items: center; gap: 5px;
+    }
+
+    .order-address {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex; align-items: flex-start; gap: 5px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .order-phone {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex; align-items: center; gap: 5px;
+      margin-bottom: 12px;
+    }
+
+    .btn-advance {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .btn-advance:hover { opacity: 0.85; transform: scale(1.02); }
+    .btn-advance:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .btn-advance:active { transform: scale(0.98); }
+
+    .btn-advance.to-preparing { background: rgba(232,147,58,0.2); color: var(--amber); }
+    .btn-advance.to-delivered { background: rgba(76,175,125,0.2); color: var(--green); }
+    .btn-advance.done { background: rgba(76,175,125,0.08); color: var(--text-muted); cursor: default; }
+
+    /* LOADING / EMPTY */
+    .loading-state, .empty-state {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; padding: 40px 20px;
+      color: var(--text-muted); font-size: 0.85rem; gap: 10px;
+      text-align: center;
+    }
+    .spinner {
+      width: 28px; height: 28px;
+      border: 2px solid var(--border);
+      border-top-color: var(--amber);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    /* ERROR */
+    .error-banner {
+      background: rgba(224,82,82,0.1);
+      border: 1px solid rgba(224,82,82,0.3);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 24px;
+      font-size: 0.875rem;
+      color: var(--red);
+      display: none;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 0.85rem;
+      color: var(--text);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transform: translateY(80px); opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 999;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { border-color: rgba(76,175,125,0.4); color: var(--green); }
+    .toast.error { border-color: rgba(224,82,82,0.4); color: var(--red); }
+
+    @media (max-width: 900px) {
+      .stats-grid, .columns { grid-template-columns: 1fr; }
+      main { padding: 72px 16px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-brand">Spice Haven Admin</span>
+    <div class="nav-right">
+      <button class="btn-refresh" id="refreshBtn" onclick="loadOrders()">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+        </svg>
+        Refresh
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-header">
+      <h2>Order Management</h2>
+      <p>Live orders from order_lists — update stages in real-time</p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div>
+          <div class="stat-label">Received</div>
+          <div class="stat-value" id="count-received">—</div>
+        </div>
+        <div class="stat-icon blue">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="stat-label">Preparing</div>
+          <div class="stat-value" id="count-preparing">—</div>
+        </div>
+        <div class="stat-icon amber">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="stat-label">Delivered</div>
+          <div class="stat-value" id="count-delivered">—</div>
+        </div>
+        <div class="stat-icon green">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ERROR -->
+    <div class="error-banner" id="errorBanner">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+      <span id="errorMsg">Something went wrong.</span>
+    </div>
+
+    <!-- COLUMNS -->
+    <div class="columns">
+      <!-- RECEIVED -->
+      <div class="column">
+        <div class="col-header blue">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--blue)"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span class="col-title blue">Received</span>
+          <span class="col-badge blue" id="badge-received">0</span>
+        </div>
+        <div class="col-body" id="col-received">
+          <div class="loading-state"><div class="spinner"></div><span>Loading...</span></div>
+        </div>
+      </div>
+
+      <!-- PREPARING -->
+      <div class="column">
+        <div class="col-header amber">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--amber)"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="col-title amber">Preparing</span>
+          <span class="col-badge amber" id="badge-preparing">0</span>
+        </div>
+        <div class="col-body" id="col-preparing">
+          <div class="loading-state"><div class="spinner"></div><span>Loading...</span></div>
+        </div>
+      </div>
+
+      <!-- DELIVERED -->
+      <div class="column">
+        <div class="col-header green">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--green)"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          <span class="col-title green">Delivered</span>
+          <span class="col-badge green" id="badge-delivered">0</span>
+        </div>
+        <div class="col-body" id="col-delivered">
+          <div class="loading-state"><div class="spinner"></div><span>Loading...</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ============================================================
+    // 🔧 SUPABASE CREDENTIALS — Replace these with your own
+    // ============================================================
+    const SUPABASE_URL = 'https://fymgbsfhpjumxnhsgvjo.supabase.co';       // e.g. https://xyzxyz.supabase.co
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5bWdic2ZocGp1bXhuaHNndmpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyMjk3MjMsImV4cCI6MjA5MTgwNTcyM30.flvgNrZxQUW7D8FNHtN8RABXBNcAKamQapTWjixDirc'; // from Project Settings > API
+    // ============================================================
+
+    const { createClient } = supabase;
+    const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ---- Toast ----
+    let toastTimer;
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = `toast show ${type}`;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ---- Build order card HTML ----
+    function buildCard(order) {
+      const stage = order.stage;
+      let btnHtml = '';
+
+      if (stage === 'received') {
+        btnHtml = `<button class="btn-advance to-preparing" onclick="advanceStage(${order.id}, 'preparing', this)">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Move to Preparing
+        </button>`;
+      } else if (stage === 'preparing') {
+        btnHtml = `<button class="btn-advance to-delivered" onclick="advanceStage(${order.id}, 'delivered', this)">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          Mark as Delivered
+        </button>`;
+      } else {
+        btnHtml = `<button class="btn-advance done" disabled>
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+          Delivered
+        </button>`;
+      }
+
+      return `
+        <div class="order-card" id="card-${order.id}">
+          <div class="order-top">
+            <span class="order-name">${escHtml(order.name)}</span>
+            <span class="order-price">Rs ${Number(order.order_price).toLocaleString()}</span>
+          </div>
+          <div class="order-dish">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3h18M3 12h18M3 21h18"/></svg>
+            ${escHtml(order.dish)}
+          </div>
+          <div class="order-address">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-top:2px;flex-shrink:0"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
+            ${escHtml(order.address)}
+          </div>
+          <div class="order-phone">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            ${escHtml(order.phone_number)}
+          </div>
+          ${btnHtml}
+        </div>`;
+    }
+
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    // ---- Advance stage ----
+    async function advanceStage(id, newStage, btn) {
+      btn.disabled = true;
+      btn.textContent = 'Updating...';
+
+      const { error } = await db
+        .from('order_lists')
+        .update({ stage: newStage })
+        .eq('id', id);
+
+      if (error) {
+        showToast('Failed: ' + error.message, 'error');
+        btn.disabled = false;
+        btn.textContent = newStage === 'preparing' ? 'Move to Preparing' : 'Mark as Delivered';
+        return;
+      }
+
+      showToast(`Order moved to ${newStage} ✓`, 'success');
+      await loadOrders();
+    }
+
+    // ---- Load all orders ----
+    async function loadOrders() {
+      const refreshBtn = document.getElementById('refreshBtn');
+      refreshBtn.classList.add('spinning');
+
+      const { data, error } = await db
+        .from('order_lists')
+        .select('*')
+        .order('imported_at', { ascending: true });
+
+      refreshBtn.classList.remove('spinning');
+
+      if (error) {
+        document.getElementById('errorBanner').style.display = 'flex';
+        document.getElementById('errorMsg').textContent = error.message;
+        return;
+      }
+
+      document.getElementById('errorBanner').style.display = 'none';
+
+      const received  = data.filter(o => o.stage === 'received');
+      const preparing = data.filter(o => o.stage === 'preparing');
+      const delivered = data.filter(o => o.stage === 'delivered');
+
+      // Update stat counts
+      document.getElementById('count-received').textContent  = received.length;
+      document.getElementById('count-preparing').textContent = preparing.length;
+      document.getElementById('count-delivered').textContent = delivered.length;
+
+      // Update column badges
+      document.getElementById('badge-received').textContent  = received.length;
+      document.getElementById('badge-preparing').textContent = preparing.length;
+      document.getElementById('badge-delivered').textContent = delivered.length;
+
+      // Render columns
+      renderCol('col-received',  received,  'No received orders yet.');
+      renderCol('col-preparing', preparing, 'No orders in preparation.');
+      renderCol('col-delivered', delivered, 'No delivered orders yet.');
+    }
+
+    function renderCol(colId, orders, emptyMsg) {
+      const el = document.getElementById(colId);
+      if (orders.length === 0) {
+        el.innerHTML = `<div class="empty-state">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="opacity:.3"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          ${emptyMsg}
+        </div>`;
+      } else {
+        el.innerHTML = orders.map(buildCard).join('');
+      }
+    }
+
+    // ---- Init ----
+    loadOrders();
+  </script>
+</body>
+</html>
